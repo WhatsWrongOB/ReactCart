@@ -1,0 +1,48 @@
+
+.cart_btn{
+    text-align: right;
+    position: absolute;
+    top: 40px;
+    right: 20px;
+}
+
+.btn{
+    position: relative;
+    right: 0;
+    padding: 10px 20px;
+    font-size:0.9rem;
+    border: 1px solid wheat;
+    border-radius: 7px;
+    background-color: aliceblue;
+    cursor: pointer;
+    transition:all ease-in-out 0.2s
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+.product_heading,.cart_heading{
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.card{
+    width: 250px;
+    height: 350px;
+    border: 1px solid black;
+    transition: all ease-in-out 0.2s;
+}
+
+.card img{
+    width: 70%;
+    height: 50%;
+    margin-left: 37px;
+}
+
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 80px;
+}
