@@ -35,9 +35,8 @@ const Product = () => {
     try {
 
       const res = await axios.get('https://fakestoreapi.com/products')
-      const obaid = res.data;
-      console.log(obaid)
-      setProducts(obaid)
+      const product = res.data;
+      setProducts(product)
 
     } catch (error) {
       console.log(error)
