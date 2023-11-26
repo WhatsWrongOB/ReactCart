@@ -30,13 +30,14 @@
 .card{
     width: 250px;
     height: 350px;
+    margin-bottom: 40px;
     border: 1px solid black;
     transition: all ease-in-out 0.2s;
 }
 
 .card img{
-    width: 70%;
-    height: 50%;
+    width: 65%;
+    height: 45%;
     margin-left: 37px;
 }
 
@@ -45,4 +46,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 80px;
+}
+
+.heading{
+    font-size: 0.9rem;
 }

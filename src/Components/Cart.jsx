@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { AppContext } from "./Product";
 
 const Cart = () => {
@@ -20,18 +20,11 @@ const Cart = () => {
     }
   }
 
-  const updateQuantity = (item, newQuantity) => {
-    const updatedCart = cart.map(cartItem =>
-      cartItem === item ? { ...cartItem, quantity: newQuantity } : cartItem
-    );
-    setCart(updatedCart);
-  };
-
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0)
+    return cart.reduce((total, item) => total + item.price, 0)
   }
 
-  if (cart.length == 0) {
+  if (cart.length === 0) {
     return <h1>No items in cart</h1>
   }
   else {
@@ -45,23 +38,17 @@ const Cart = () => {
         <div className="wrapper">
 
           {
-            cart.map((item) => (
+            cart.map((item, index) => (
 
-              <div className="card">
-                <img src={item.img} alt="img" />
-                <h2 className="heading">{item.name}</h2>
+              <div key={index} className="card">
+                <img src={item.image} alt="img" />
+                <h2 className="heading">{item.title}</h2>
                 <h2 className="heading_two">{item.price}</h2>
-                <input
-                  type="number"
-                  value={item.quantity}
-                  onChange={(e) => updateQuantity(item, parseInt(e.target.value, 10))}
-                />
                 <button className="btn" onClick={() => removeFromCart(item)}>Remove</button>
               </div>
 
             ))
           }
-
         </div>
       </div>
 
