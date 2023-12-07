@@ -43,7 +43,7 @@ const Cart = () => {
               <div key={index} className="card">
                 <img src={item.image} alt="img" />
                 <h2 className="heading">{item.title}</h2>
-                <h2 className="heading_two">{item.price}</h2>
+                <h2 className="heading_two">${item.price}</h2>
                 <button className="btn" onClick={() => removeFromCart(item)}>Remove</button>
               </div>
 

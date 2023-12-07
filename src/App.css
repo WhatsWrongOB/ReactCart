@@ -51,3 +51,11 @@
 .heading{
     font-size: 0.9rem;
 }
+
+.search{
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 10px;
+    margin-right: 30px;
+}

@@ -26,55 +26,60 @@ const AppProvider = ({ children }) => {
   )
 }
 
-
 const Product = () => {
 
   const [products, setProducts] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   const fetchProducts = async () => {
+
     try {
-
-      const res = await axios.get('https://fakestoreapi.com/products')
+      const res = await axios.get('https://fakestoreapi.com/products');
       const product = res.data;
-      setProducts(product)
-
+      setProducts(product);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
-  }
+  };
 
   useEffect(() => {
+    fetchProducts();
+  }, []);
 
-    fetchProducts()
-
-  }, [])
-
-  const data = useContext(AppContext)
+  const data = useContext(AppContext);
   const { cart, handleCart } = data;
 
-  return (
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchInput.toLowerCase())
+  );
 
+  return (
     <div className="container">
       <h1 className="product_heading">Products</h1>
       <div className="cart_btn">
-        <Link to='/cart'>
-          <button className='btn'>Cart</button>
+        <input
+          type="search"
+          className='search'
+          placeholder="search"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <Link to="/cart">
+          <button className="btn">Cart</button>
         </Link>
         <h4>Total Item:{cart.length}</h4>
       </div>
       <div className="wrapper">
-        {
-          products.map((item) => (
-            <ProductCard key={item.id} product={item} addToCart={handleCart} />
-          ))
-        }
+        {filteredProducts.map((item) => (
+          <ProductCard key={item.id} product={item} addToCart={handleCart} />
+        ))}
       </div>
-
     </div>
+  );
+};
 
-  )
-}
+// ...
+
 
 export default Product;
 export { AppContext, AppProvider }
