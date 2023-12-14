@@ -8,14 +8,13 @@ const Cart = () => {
 
   console.log(cart)
 
-  const removeFromCart = (itemToRemove) => {
+  const removeFromCart = (index) => {
 
     const isConfirmed = window.confirm("Are you sure you want to add this item to the cart?");
 
     if (isConfirmed) {
-      const updatedCart = cart.filter((item) => {
-        return item !== itemToRemove
-      })
+      const updatedCart = [...cart]
+      updatedCart.pop(updatedCart[index])
       setCart(updatedCart)
     }
   }
@@ -44,7 +43,7 @@ const Cart = () => {
                 <img src={item.image} alt="img" />
                 <h2 className="heading">{item.title}</h2>
                 <h2 className="heading_two">${item.price}</h2>
-                <button className="btn" onClick={() => removeFromCart(item)}>Remove</button>
+                <button className="btn" onClick={() => removeFromCart(index)}>Remove</button>
               </div>
 
             ))
